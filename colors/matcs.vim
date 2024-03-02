@@ -12,6 +12,7 @@ hi! Error guifg=#ff4455 guibg=#403142 gui=none
 hi! link ErrorMsg Error
 hi! link DiagnosticError Error
 hi! DiagnosticWarn guifg=#ffaa00 guibg=#3c3942 gui=none
+hi! link DiagnosticUnnecessary NormalGrey
 
 hi! link WildMenu NormalLight
 hi! link Pmenu NormalLight
@@ -38,6 +39,7 @@ hi! link NvimTreeNormal NormalDark
 hi! link NvimTreeFileDirty Type
 hi! link NvimTreeFileNew NvimTreeFileDirty
 hi! link NvimTreeFolderDirty Keyword
+hi! link NvimTreeExecFile Constant
 
 hi! Comment guifg=#ff8bcb
 hi! String guifg=#66ff8c
@@ -53,6 +55,8 @@ hi! link Function Type
 hi! link Identifier Normal
 hi! link Special Normal
 
+hi! link MoreMsg Keyword
+
 hi! link markdownCodeDelimiter Keyword
 hi! link markdownH1Delimiter Keyword
 hi! link markdownH2Delimiter Keyword
@@ -60,13 +64,22 @@ hi! link markdownH3Delimiter Keyword
 hi! link markdownH4Delimiter Keyword
 hi! link markdownH5Delimiter Keyword
 hi! link markdownH6Delimiter Keyword
+hi! link markdownH6Delimiter Keyword
 hi! link markdownCodeBlock Type
 hi! link markdownItalicDelimiter Keyword
 hi! link markdownBoldDelimiter Keyword
 
+hi! link javaScopeDecl Keyword
+hi! link javaClassDecl Keyword
+hi! link javaStorageClass Keyword
+
 hi! link @constant.builtin.javascript Constant
 hi! link @function.builtin.python Keyword
+hi! link @constant.builtin.python Constant
 hi! link @string.escape.javascript Comment
 hi! link @variable.builtin.javascript Keyword
 hi! link @punctuation.delimiter.javascript Keyword
+hi! link xmlTagName Keyword
+hi! link xmlTag Keyword
+hi! link xmlAttribPunct Type
 
