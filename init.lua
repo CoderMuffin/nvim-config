@@ -616,6 +616,18 @@ mason_lspconfig.setup_handlers {
   end
 }
 
+require("lspconfig").quick_lint_js.setup {
+  handlers = {
+    ['textDocument/publishDiagnostics'] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+        update_in_insert = true
+      }
+    )
+  },
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
+}
+-- require('lspconfig/quick_lint_js').setup {
+
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
 local cmp = require 'cmp'

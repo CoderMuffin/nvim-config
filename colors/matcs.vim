@@ -73,13 +73,15 @@ hi! link javaScopeDecl Keyword
 hi! link javaClassDecl Keyword
 hi! link javaStorageClass Keyword
 
-hi! link @constant.builtin.javascript Constant
+hi! link @constant.builtin Constant
 hi! link @function.builtin.python Keyword
-hi! link @constant.builtin.python Constant
-hi! link @string.escape.javascript Comment
-hi! link @variable.builtin.javascript Keyword
-hi! link @punctuation.delimiter.javascript Keyword
+hi! link @string.escape Comment
+hi! link @variable.builtin Keyword
+hi! link @punctuation.delimiter Keyword
 hi! link xmlTagName Keyword
 hi! link xmlTag Keyword
 hi! link xmlAttribPunct Type
+
+hi! Search cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
+hi! link Visual Search
 
