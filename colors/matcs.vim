@@ -12,6 +12,7 @@ hi! Error guifg=#ff4455 guibg=#403142 gui=none
 hi! link ErrorMsg Error
 hi! link DiagnosticError Error
 hi! DiagnosticWarn guifg=#ffaa00 guibg=#3c3942 gui=none
+hi! link WarningMsg Warn
 hi! link DiagnosticUnnecessary NormalGrey
 
 hi! link WildMenu NormalLight
