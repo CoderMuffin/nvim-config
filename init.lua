@@ -13,12 +13,6 @@ vim.g.gitgutter_sign_added = '+'
 vim.g.gitgutter_sign_modified = '~'
 vim.g.gitgutter_sign_removed = '-'
 
-function ThemeColor(name, field)
-  local id = vim.fn.synIDtrans(vim.fn.hlID(name))
-  local background_color = vim.fn.synIDattr(id, field, "gui")
-  return background_color
-end
-
 function FormatCommand()
   local filetype = vim.bo.filetype
   if filetype == "rust" then
@@ -41,9 +35,9 @@ vim.cmd([[
   endif
 ]])
 
-require("cm.lazy")
 require("cm.options")
 require("cm.keymap")
+require("cm.lazy")
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -59,6 +53,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require("cm.cfg.telescope")
 require("cm.lsp")
 require("cm.cfg.cmp")
+require("cm.cfg.treesitter")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

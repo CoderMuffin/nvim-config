@@ -18,6 +18,7 @@ hi! link DiagnosticUnnecessary NormalGrey
 hi! link WildMenu NormalLight
 hi! link Pmenu NormalLight
 hi! link PmenuSel NormalDark
+hi! link NormalFloat NormalLight
 hi! link SignColumn Normal
 hi! link LineNr NormalGrey
 hi! link NonText NormalGrey
@@ -28,6 +29,7 @@ hi! htmlTag guifg=#adaeb5
 hi! link htmlEndTag htmlTag
 hi! link Question Keyword
 exe 'hi! VertSplit guifg=' . s:vs . ' guibg=' . s:vs
+exe 'hi! WinSeparator guifg=' . s:vs . ' guibg=' . s:vs
 exe 'hi! StatusLine guifg=' . s:vs . ' guibg=' . s:vs
 exe 'hi! StatusLineNC guifg=' . s:vs . ' guibg=' . s:vs
 

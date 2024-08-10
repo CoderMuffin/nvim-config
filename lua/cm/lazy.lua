@@ -13,6 +13,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+function ThemeColor(name, field)
+  local id = vim.fn.synIDtrans(vim.fn.hlID(name))
+  local background_color = vim.fn.synIDattr(id, field, "gui")
+  return background_color
+end
+
 require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
