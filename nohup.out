@@ -1,0 +1,10 @@
+2024-08-10 14:36:33 Loading main app package /opt/Obsidian/resources/obsidian.asar
+2024-08-10 14:36:46 Checking for update using Github
+2024-08-10 14:37:11 Loading main app package /opt/Obsidian/resources/obsidian.asar
+2024-08-10 14:37:12 Checking for update using Github
+2024-08-10 14:37:12 Success.
+2024-08-10 14:37:12 Latest version is 1.6.7
+2024-08-10 14:37:12 App is up to date.
+[4801:0810/153713.778800:ERROR:gl_surface_presentation_helper.cc(260)] GetVSyncParametersIfAvailable() failed for 1 times!
+[4801:0810/153713.783091:ERROR:gl_surface_presentation_helper.cc(260)] GetVSyncParametersIfAvailable() failed for 2 times!
+[4673:0810/154120.837322:ERROR:zygote_communication_linux.cc(290)] Failed to send GetTerminationStatus message to zygote
