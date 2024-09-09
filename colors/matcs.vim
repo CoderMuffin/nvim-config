@@ -88,3 +88,11 @@ hi! link xmlAttribPunct Type
 hi! Search cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
 hi! link Visual Search
 
+hi! link CmpItemKind String
+hi! link CmpItemKindKeyword Keyword
+hi! link CmpItemKindConstructor Keyword
+hi! link CmpItemKindFunction Type
+hi! link CmpItemKindMethod Type
+hi! link CmpItemKindEnumMember Constant
+hi! link CmpItemKindSnippet Comment
+

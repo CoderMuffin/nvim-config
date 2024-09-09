@@ -50,6 +50,19 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- [[ Detect file type ]]
+local filetype_group = vim.api.nvim_create_augroup('SyntaxFromFiletype', { clear = true })
+vim.api.nvim_create_autocmd('BufReadPost', {
+  callback = function()
+    if vim.bo.syntax == "" then
+      vim.cmd("filetype detect")
+      vim.bo.syntax = vim.bo.filetype
+    end
+  end,
+  group = filetype_group,
+  pattern = '*'
+})
+
 require("cm.cfg.telescope")
 require("cm.lsp")
 require("cm.cfg.cmp")
