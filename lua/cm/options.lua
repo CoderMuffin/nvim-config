@@ -6,6 +6,8 @@ vim.opt.eol = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
+vim.wo.relativenumber = true
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)

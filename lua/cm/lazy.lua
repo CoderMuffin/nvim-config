@@ -27,6 +27,8 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  'ThePrimeagen/vim-be-good',
+
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -54,11 +56,25 @@ require('lazy').setup({
 
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
     },
   },
+
+  --[[{
+    'rmagatti/auto-session',
+    lazy = false,
+    opts = {
+      auto_restore_last_session = true,
+      post_restore_cmds = {
+        "NvimTreeOpen"
+      }
+    }
+  },]]--
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
@@ -235,6 +251,11 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
+
+  -- nice tabs
+  -- {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons', config=function()
+    -- require("bufferline").setup{}
+  -- end}
 }, {})
 
 -- Enable telescope fzf native, if installed

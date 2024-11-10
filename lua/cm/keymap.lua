@@ -2,7 +2,6 @@
 vim.keymap.set('n', '<Up>', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', '<Down>', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-vim.api.nvim_set_keymap('i', '<C-D>', '<ESC><S-V>yp<ESC>i', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-D>', '<S-V>yp<ESC>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Tab>', '<C-W>l', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<S-Tab>', '<C-W>h', { noremap = true, silent = true })

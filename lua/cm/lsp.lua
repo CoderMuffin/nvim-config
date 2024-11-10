@@ -1,4 +1,4 @@
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
@@ -97,6 +97,7 @@ local servers = {
     }
   },
   quick_lint_js = {
+    -- disable = true, -- THIS PLUGIN IS DISABLED THIS PLUGIN IS DISABLED THIS PLUGIN IS DISABLED THIS PLUGIN IS DISABLED THIS PLUGIN IS DISABLED
     handlers = {
       ['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
         update_in_insert = true
@@ -105,6 +106,10 @@ local servers = {
     settings = {
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
     }
+  },
+  eslint = {
+    disable = true,
+    settings = { filetypes = { "javascript" } }
   }
 }
 
@@ -125,6 +130,9 @@ mason_lspconfig.setup {
 
 mason_lspconfig.setup_handlers {
   function(server_name)
+    if servers[server_name].disable then
+      return
+    end
     lspconfig[server_name].setup(vim.tbl_deep_extend("error", servers[server_name], {
       capabilities = capabilities,
       on_attach = on_attach,

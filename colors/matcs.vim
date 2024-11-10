@@ -96,3 +96,6 @@ hi! link CmpItemKindMethod Type
 hi! link CmpItemKindEnumMember Constant
 hi! link CmpItemKindSnippet Comment
 
+syn match TrailingWhitespace "\s\+$"
+hi! TrailingWhitespace guibg=#ff4455
+

@@ -3,9 +3,9 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = { 'c', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'markdown', 'markdown_inline' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-  auto_install = true,
+  auto_install = false,
 
-  ignore_install = { "c_sharp", "cpp" }, -- lsp does good enough
+  ignore_install = { "c_sharp", "cpp", "html" }, -- lsp does good enough
 
   highlight = { enable = true },
   indent = { enable = true },
