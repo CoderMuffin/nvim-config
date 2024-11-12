@@ -154,11 +154,23 @@ require('lazy').setup({
   },
 
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    "navarasu/onedark.nvim",
     priority = 1000,
     config = function()
-      -- vim.cmd.colorscheme 'onedark'
+      require("onedark").setup {
+        colors = require("cm.colors"),
+        cmp_itemkind_reverse = true
+      }
+
+      vim.cmd.colorscheme 'onedark'
+
+      require("cm.hl")
+
+      local timer = vim.loop.new_timer()
+      -- Delay 2000ms and 0 means "do not repeat"
+      timer:start(2000, 0, vim.schedule_wrap(function()
+        vim.cmd("source ~/.config/nvim/lua/cm/hl.lua")
+      end))
     end,
   },
 
@@ -169,24 +181,24 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        -- theme = 'onedark',
-        theme = {
-          inactive = {
-            a = { fg = ThemeColor("NormalGrey", "fg"), bg = ThemeColor("NormalLight", "bg") },
-            c = { fg = ThemeColor("NormalGrey", "fg"), bg = ThemeColor("NormalSemiLight", "bg") }
-          },
-          insert = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Keyword", "fg") } },
-          normal = {
-            a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("String", "fg") },
-            b = { fg = ThemeColor("NormalVeryLight", "fg"), bg = ThemeColor("NormalVeryLight", "bg") },
-            y = { fg = ThemeColor("NormalVeryLight", "fg"), bg = ThemeColor("NormalVeryLight", "bg") },
-            c = { fg = ThemeColor("NormalLight", "fg"), bg = ThemeColor("NormalLight", "bg") },
-          },
-          command = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Number", "fg") } },
-          terminal = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Keyword", "fg") } },
-          visual = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Type", "fg") } },
-          replace = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Comment", "fg") } },
-        },
+        theme = 'onedark',
+        -- theme = {
+          -- inactive = {
+            -- a = { fg = ThemeColor("NormalGrey", "fg"), bg = ThemeColor("NormalLight", "bg") },
+            -- c = { fg = ThemeColor("NormalGrey", "fg"), bg = ThemeColor("NormalSemiLight", "bg") }
+          -- },
+          -- insert = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Keyword", "fg") } },
+          -- normal = {
+            -- a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("String", "fg") },
+            -- b = { fg = ThemeColor("NormalVeryLight", "fg"), bg = ThemeColor("NormalVeryLight", "bg") },
+            -- y = { fg = ThemeColor("NormalVeryLight", "fg"), bg = ThemeColor("NormalVeryLight", "bg") },
+            -- c = { fg = ThemeColor("NormalLight", "fg"), bg = ThemeColor("NormalLight", "bg") },
+          -- },
+          -- command = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Number", "fg") } },
+          -- terminal = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Keyword", "fg") } },
+          -- visual = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Type", "fg") } },
+          -- replace = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Comment", "fg") } },
+        -- },
         component_separators = '',
         section_separators = '',
       },

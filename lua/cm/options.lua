@@ -1,4 +1,4 @@
-vim.cmd("colorscheme matcs")
+-- vim.cmd("colorscheme matcs")
 vim.cmd("set nosmd")
 vim.cmd("set fillchars=eob:\\ ")
 
