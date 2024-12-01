@@ -255,6 +255,8 @@ require('lazy').setup({
     },
   },
 
+  { 'natecraddock/workspaces.nvim', opts = {} },
+
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',

@@ -1,7 +1,11 @@
-function Reload()
-  vim.cmd("source ~/.config/nvim/init.lua")
+function Reload(file)
+  vim.cmd("source ~/.config/nvim/lua/cm/" .. file:gsub("^%s*(.-)%s*$", "%1") .. ".lua")
 end
-vim.cmd("command! Reload lua Reload()")
+vim.api.nvim_create_user_command(
+  "Reload", -- Command name
+  function(args) Reload(args.args) end, -- Command logic
+  { nargs = 1 } -- Options: `?` means optional argument
+)
 
 function Rename()
   local CR = vim.api.nvim_replace_termcodes("<C-R>", true, false, true)

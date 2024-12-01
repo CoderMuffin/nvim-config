@@ -11,11 +11,16 @@ vim.cmd([[
   hi! link @property Special
   hi! link @field @property
 
+  hi! link @constructor @type
+
   " Language specific
 
   hi! link @property.javascript @property
   hi! link @method.call.javascript @method.call
   hi! link @punctuation.delimiter Keyword
+  hi! link @variable.builtin.javascript Keyword
+
+  hi! link @type.css Keyword
 
   " LSP
 
@@ -28,6 +33,8 @@ vim.cmd([[
   hi! Search cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
   hi! link Visual Search
 ]])
+
+vim.cmd("command! FixHl source ~/.config/nvim/lua/cm/hl.lua");
 
 function hi(name, fg, bg, gui)
   vim.cmd("hi " .. name .. 

@@ -97,7 +97,7 @@ local servers = {
     }
   },
   quick_lint_js = {
-    -- disable = true, -- THIS PLUGIN IS DISABLED THIS PLUGIN IS DISABLED THIS PLUGIN IS DISABLED THIS PLUGIN IS DISABLED THIS PLUGIN IS DISABLED
+    disable = true, -- THIS PLUGIN IS DISABLED THIS PLUGIN IS DISABLED THIS PLUGIN IS DISABLED THIS PLUGIN IS DISABLED THIS PLUGIN IS DISABLED
     handlers = {
       ['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
         update_in_insert = true
@@ -110,7 +110,11 @@ local servers = {
   eslint = {
     disable = true,
     settings = { filetypes = { "javascript" } }
-  }
+  },
+  cssls = {
+    settings = {}
+  },
+  tsserver = {}
 }
 
 -- Setup neovim lua configuration
@@ -130,6 +134,11 @@ mason_lspconfig.setup {
 
 mason_lspconfig.setup_handlers {
   function(server_name)
+    if not servers[server_name] then
+      vim.notify("server " .. server_name .. " not configured")
+      lspconfig[server_name].setup({})
+      return
+    end
     if servers[server_name].disable then
       return
     end
