@@ -169,7 +169,7 @@ require('lazy').setup({
       local timer = vim.loop.new_timer()
       -- Delay 2000ms and 0 means "do not repeat"
       timer:start(2000, 0, vim.schedule_wrap(function()
-        vim.cmd("source ~/.config/nvim/lua/cm/hl.lua")
+        vim.cmd(":FixHl")
       end))
     end,
   },
@@ -255,7 +255,14 @@ require('lazy').setup({
     },
   },
 
-  { 'natecraddock/workspaces.nvim', opts = {} },
+  {
+    'natecraddock/workspaces.nvim',
+    opts = {
+      hooks = {
+        open = { "e ." },
+      }
+    }
+  },
 
   {
     -- Highlight, edit, and navigate code

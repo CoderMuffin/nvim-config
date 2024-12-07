@@ -1,3 +1,5 @@
+require('nvim-treesitter.install').compilers = { 'clang' }
+
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'markdown', 'markdown_inline' },

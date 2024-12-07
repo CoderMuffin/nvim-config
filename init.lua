@@ -1,5 +1,5 @@
 function Reload(file)
-  vim.cmd("source ~/.config/nvim/lua/cm/" .. file:gsub("^%s*(.-)%s*$", "%1") .. ".lua")
+  vim.cmd("source " .. vim.fn.stdpath('config') .. "/lua/cm/" .. vim.trim(file) .. ".lua")
 end
 vim.api.nvim_create_user_command(
   "Reload", -- Command name
@@ -33,7 +33,7 @@ end
 vim.cmd('command! Format lua FormatCommand()')
 
 vim.cmd([[
-  if !executable("rg")
+  if !executable("rg") && !has("win32")
     echo 'Installing ripgrep...'
     execute '!sudo apt-get install ripgrep'
   endif

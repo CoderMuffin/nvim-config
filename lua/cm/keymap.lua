@@ -4,7 +4,7 @@
 
 vim.api.nvim_set_keymap('n', '<Tab>', '<C-W>l', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<S-Tab>', '<C-W>h', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<S-T>', '<C-W>200h', { noremap = true })
+vim.api.nvim_set_keymap('n', '<S-T>', ':NvimTreeOpen<CR>', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<C-S>', ':w<CR>', { noremap = true })
 -- vim.api.nvim_set_keymap('i', '<C-S>', '<ESC>:w<CR>', { noremap = true })
 -- vim.api.nvim_set_keymap('i', '<C-Z>', '<ESC>ui', { noremap = true })
@@ -20,6 +20,7 @@ vim.keymap.set('n', '<leader>td', ':Telescope diagnostics<CR>', { noremap = true
 vim.keymap.set('n', '<leader>tf', ':Telescope fd<CR>', { noremap = true, silent = true, desc = "Telescope files" })
 vim.keymap.set('n', '<leader>tg', ':Telescope live_grep<CR>', { noremap = true, silent = true, desc = "Telescope grep" })
 vim.keymap.set('n', '<leader>ta', ':Telescope<CR>', { noremap = true, silent = true, desc = "Telescope view all" })
+vim.keymap.set('n', '<leader>tw', ':Telescope workspaces<CR>', { noremap = true, silent = true, desc = "Telescope workspaces" })
 
 vim.keymap.set('n', '<leader>la', ':lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true, desc = "LSP code action" })
 vim.keymap.set('n', '<leader>lA', ':lua vim.lsp.buf.code_action({ apply = true })<CR>', { noremap = true, silent = true, desc = "LSP apply code action" })

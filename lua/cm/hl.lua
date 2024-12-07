@@ -34,19 +34,29 @@ vim.cmd([[
   hi! link Visual Search
 ]])
 
-vim.cmd("command! FixHl source ~/.config/nvim/lua/cm/hl.lua");
+vim.cmd("command! FixHl source " .. vim.fn.stdpath('config') .. "/lua/cm/hl.lua");
 
 function hi(name, fg, bg, gui)
-  vim.cmd("hi " .. name .. 
+  vim.cmd("hi! " .. name .. 
     (fg and (" guifg=" .. fg) or "") ..
     (bg and (" guibg=" .. bg) or "") .. 
     (gui and (" gui=" .. gui) or ""))
 end
 
-bg = require("cm.colors").bg1
+local colors = require("cm.colors")
 
-hi("VertSplit", bg, bg)
-hi("WinSeparator", bg, bg)
-hi("StatusLine", bg, bg)
-hi("StatusLineNC", bg, bg)
+hi("VertSplit", colors.bg1, "bg")
+hi("WinSeparator", colors.bg1, "bg")
+hi("StatusLine", colors.bg1, colors.bg1)
+hi("StatusLineNC", colors.bg1, colors.bg1)
+
+local function diagnostic_sign(name, text, color)
+  hi("DiagnosticSign" .. name, color)
+  vim.cmd("sign define DiagnosticSign" .. name .. " text=" .. text .. " texthl=DiagnosticSign" .. name)
+end
+
+diagnostic_sign("Error", "", colors.dark_red)
+diagnostic_sign("Warn", "", colors.dark_yellow)
+diagnostic_sign("Info", "", colors.dark_blue)
+diagnostic_sign("Hint", "", colors.dark_purple)
 
