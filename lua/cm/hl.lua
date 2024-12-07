@@ -13,6 +13,8 @@ vim.cmd([[
 
   hi! link @constructor @type
 
+  hi! link @punctuation.bracket Normal
+
   " Language specific
 
   hi! link @property.javascript @property

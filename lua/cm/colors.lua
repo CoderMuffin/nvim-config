@@ -10,7 +10,7 @@ return {
   orange = "#f19a46",
   blue = "#70c8ff",
   yellow = "#f5d07b",
-  cyan = "#56d8d0",
+  cyan = "#56c8c0",
   red = "#ef7681",
   grey = "#9ca3b0",
   light_grey = "#d0d3d6",
