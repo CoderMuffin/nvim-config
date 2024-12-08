@@ -3,9 +3,9 @@ return {
   bg1 = "#30343c",
   bg2 = "#40444c",
   bg3 = "#50545c",
-  bg_d = "", -- use bg1
+  bg_d = "", -- "#181c24", -- use bg1
   fg = "#c8c8d6",
-  purple = "#d060df",
+  purple = "#e070ef",
   green = "#90e880",
   orange = "#f19a46",
   blue = "#70c8ff",

@@ -15,6 +15,8 @@ vim.cmd([[
 
   hi! link @punctuation.bracket Normal
 
+  hi! link @variable.builtin Keyword
+
   " Language specific
 
   hi! link @property.javascript @property
