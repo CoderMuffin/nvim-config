@@ -1,8 +1,10 @@
 local telescope = require('telescope')
+local actions = require('telescope.actions')
+
 telescope.setup {
   extensions = { workspaces = {} },
   defaults = {
-	file_ignore_patterns = { ".git" },
+    file_ignore_patterns = { ".git" },
     mappings = {
       i = {
         ['<C-u>'] = false,
