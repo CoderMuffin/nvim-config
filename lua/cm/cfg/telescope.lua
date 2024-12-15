@@ -6,7 +6,7 @@ telescope.setup {
     mappings = {
       i = {
         ['<C-u>'] = false,
-        ['<C-d>'] = false,
+        ['<C-d>'] = actions.delete_buffer,
       },
     },
   },

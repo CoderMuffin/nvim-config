@@ -12,6 +12,7 @@ vim.cmd([[
   hi! link @field @property
 
   hi! link @constructor @type
+  hi! link @lsp.type.class @type
 
   hi! link @punctuation.bracket Normal
 

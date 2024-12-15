@@ -121,6 +121,9 @@ require('lazy').setup({
     },
     config = function()
       require("nvim-tree").setup {
+        view = {
+          preserve_window_proportions = true
+        },
         renderer = {
           highlight_git = true,
           -- indent_width = 4,
