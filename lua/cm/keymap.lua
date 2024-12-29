@@ -2,8 +2,6 @@
 -- vim.keymap.set('n', '<Up>', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 -- vim.keymap.set('n', '<Down>', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<Tab>', '<C-W>l', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<S-Tab>', '<C-W>h', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<S-T>', ':NvimTreeOpen<CR>', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<C-S>', ':w<CR>', { noremap = true })
 -- vim.api.nvim_set_keymap('i', '<C-S>', '<ESC>:w<CR>', { noremap = true })
@@ -26,11 +24,13 @@ vim.keymap.set('n', '<leader>la', ':lua vim.lsp.buf.code_action()<CR>', { norema
 vim.keymap.set('n', '<leader>lA', ':lua vim.lsp.buf.code_action({ apply = true })<CR>', { noremap = true, silent = true, desc = "LSP apply code action" })
 vim.keymap.set('n', '<leader>ld', ':lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true, desc = "LSP definition" })
 vim.keymap.set('n', '<leader>lD', ':lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true, desc = "LSP declaration" })
+vim.keymap.set('n', '<leader>lf', ':lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true, desc = "LSP format" })
 vim.keymap.set('n', '<leader>lh', ':lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true, desc = "LSP hover" })
 vim.keymap.set('n', '<leader>li', ':lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true, desc = "LSP implementation" })
 vim.keymap.set('n', '<leader>ls', ':lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true, desc = "LSP signature" })
 vim.keymap.set('n', '<leader>lr', ':lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true, desc = "LSP rename" })
 vim.keymap.set('n', '<leader>lt', ':lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true, desc = "LSP type definition" })
+vim.keymap.set('n', '<leader>lu', ':lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true, desc = "LSP uses" })
 
 -- wrap <left> and <right> to next line
 vim.cmd('set whichwrap+=<,>,[,]')
