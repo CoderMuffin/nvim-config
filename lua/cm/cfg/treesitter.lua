@@ -7,7 +7,18 @@ require('nvim-treesitter.configs').setup {
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
 
-  highlight = { enable = true, additional_vim_regex_highlighting = true },
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = true,
+    is_supported = function ()
+      if vim.fn.strwidth(vim.fn.getline('.')) > 300
+        or vim.fn.getfsize(vim.fn.expand('%')) > 1024 * 1024 then
+        return false
+      else
+        return true
+      end
+    end
+  },
   indent = { enable = true },
   incremental_selection = {
     enable = true,
