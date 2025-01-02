@@ -31,6 +31,7 @@ vim.cmd([[
 
   hi! link @lsp.type.property Special
   hi! link @lsp.type.enum @type
+  hi! link @lsp.type.type Constant
   hi! link @lsp.type.parameter @variable
   
   " General

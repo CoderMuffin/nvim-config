@@ -13,6 +13,7 @@ require('nvim-treesitter.configs').setup {
     is_supported = function ()
       if vim.fn.strwidth(vim.fn.getline('.')) > 300
         or vim.fn.getfsize(vim.fn.expand('%')) > 1024 * 1024 then
+        vim.opt_local.wrap = false
         return false
       else
         return true

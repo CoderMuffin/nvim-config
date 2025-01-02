@@ -52,7 +52,7 @@ local icons = {
 cmp.setup {
   window = { completion = { side_padding = 0 } },
   performance = {
-    max_view_entries = 20
+    -- max_view_entries = 20
   },
   snippet = {
     expand = function(args)
