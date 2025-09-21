@@ -39,10 +39,13 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim', event = "LspAttach", opts = {} },
 
-      -- Additional lua configuration, makes nvim stuff amazing!
-      'folke/neodev.nvim',
+      -- Additional lua configuration, makes nvim stuff amazing
+      { 'folke/neodev.nvim', opts = {} },
+
+      -- csharp
+      { 'Hoffs/omnisharp-extended-lsp.nvim', lazy = true },
     },
   },
 
@@ -234,8 +237,6 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
-
-  { 'Hoffs/omnisharp-extended-lsp.nvim', opts = {}, config = function() end },
 
   -- Fuzzy Finder (files, lsp, etc)
   {

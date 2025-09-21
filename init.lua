@@ -17,21 +17,6 @@ vim.g.gitgutter_sign_added = '+'
 vim.g.gitgutter_sign_modified = '~'
 vim.g.gitgutter_sign_removed = '-'
 
-function FormatCommand()
-  local filetype = vim.bo.filetype
-  if filetype == "rust" then
-    vim.cmd('!rustfmt --edition 2018 -i %')
-  elseif filetype == "c" or filetype == "cs" or filetype == "javascript" or filetype == "java" then
-    vim.cmd(
-      '!clang-format --style="{ BasedOnStyle: LLVM, InsertNewlineAtEOF: true, IndentWidth: 4, UseTab: Never, BreakBeforeBraces: Attach, AllowShortBlocksOnASingleLine: Empty, SortIncludes: false, ColumnLimit: 0 }" -i %')
-  else
-    print("Unknown filetype " .. filetype .. ", using LSP instead")
-    vim.cmd(":LSPFormat")
-  end
-end
-
-vim.cmd('command! Format lua FormatCommand()')
-
 vim.cmd([[
   if !executable("rg") && !has("win32")
     echo 'Installing ripgrep...'
@@ -55,17 +40,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- [[ Detect file type ]]
-local filetype_group = vim.api.nvim_create_augroup('SyntaxFromFiletype', { clear = true })
-vim.api.nvim_create_autocmd('BufReadPost', {
-  callback = function()
-    if vim.bo.syntax == "" then
-      vim.cmd("filetype detect")
-      vim.bo.syntax = vim.bo.filetype
-    end
-  end,
-  group = filetype_group,
-  pattern = '*'
-})
+-- local filetype_group = vim.api.nvim_create_augroup('SyntaxFromFiletype', { clear = true })
+-- vim.api.nvim_create_autocmd('BufReadPost', {
+  -- callback = function()
+    -- vim.cmd("Reload options")
+    -- if vim.bo.syntax == "" then
+      -- vim.cmd("filetype detect")
+      -- vim.bo.syntax = vim.bo.filetype
+    -- end
+  -- end,
+  -- group = filetype_group,
+  -- pattern = '*'
+-- })
 
 require("cm.cfg.telescope")
 require("cm.lsp")

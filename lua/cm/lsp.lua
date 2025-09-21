@@ -1,4 +1,28 @@
--- vim.lsp.set_log_level("debug")
+local function trim_log_file()
+    local LOG_FILE = require('vim.lsp.log').get_filename()
+
+    local f = io.open(LOG_FILE, "r")
+    if f == nil then
+        return
+    end
+
+    local len = f:seek("end")
+    local start = len - 1000000
+    if start <= 0 then
+        f:close()
+        return
+    end
+
+    f:seek("set", start)
+    local text = f:read("*a"):gsub('^[^\n]*\n', '')
+    f:close()
+
+    f = assert(io.open(LOG_FILE, "w"))
+    f:write(text)
+    f:close()
+end
+
+trim_log_file()
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
@@ -77,16 +101,19 @@ local servers = {
       filetypes = { 'html', 'twig', 'hbs' }
     }
   },
+  -- omnisharp_mono = {},
   omnisharp = {
+    -- disable = true, -- THIS PLUGIN IS DISABLED THIS PLUGIN IS DISABLED THIS PLUGIN IS DISABLED
     handlers = {
       ["textDocument/definition"] = ose.definition_handler,
       ["textDocument/typeDefinition"] = ose.type_definition_handler,
       ["textDocument/references"] = ose.references_handler,
       ["textDocument/implementation"] = ose.implementation_handler,
     },
+    cmd = { "dotnet", vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
     settings = {
       filetypes = { 'cs', 'vb' }
-    }
+    },
   },
   lua_ls = {
     settings = {
@@ -107,22 +134,14 @@ local servers = {
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
     }
   },
-  eslint = {
-    disable = true,
-    settings = { filetypes = { "javascript" } }
-  },
   cssls = {
     settings = {}
   },
   tsserver = {}
 }
 
--- Setup neovim lua configuration
-require('neodev').setup()
-
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
