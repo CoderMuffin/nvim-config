@@ -7,16 +7,6 @@ vim.api.nvim_create_user_command(
   { nargs = 1 } -- Options: `?` means optional argument
 )
 
-function Rename()
-  local CR = vim.api.nvim_replace_termcodes("<C-R>", true, false, true)
-  vim.api.nvim_feedkeys("gdva{:s/" .. CR .. "//", "n", false)
-end
-vim.cmd("command! Rename lua Rename()")
-
-vim.g.gitgutter_sign_added = '+'
-vim.g.gitgutter_sign_modified = '~'
-vim.g.gitgutter_sign_removed = '-'
-
 vim.cmd([[
   if !executable("rg") && !has("win32")
     echo 'Installing ripgrep...'
@@ -27,31 +17,16 @@ vim.cmd([[
 require("cm.options")
 require("cm.keymap")
 require("cm.lazy")
+require("cm.diagnostics")
 
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
   group = highlight_group,
   pattern = '*',
 })
-
--- [[ Detect file type ]]
--- local filetype_group = vim.api.nvim_create_augroup('SyntaxFromFiletype', { clear = true })
--- vim.api.nvim_create_autocmd('BufReadPost', {
-  -- callback = function()
-    -- vim.cmd("Reload options")
-    -- if vim.bo.syntax == "" then
-      -- vim.cmd("filetype detect")
-      -- vim.bo.syntax = vim.bo.filetype
-    -- end
-  -- end,
-  -- group = filetype_group,
-  -- pattern = '*'
--- })
 
 require("cm.cfg.telescope")
 require("cm.lsp")

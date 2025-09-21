@@ -1,5 +1,4 @@
 -- Install lazy if missing
--- `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -29,23 +28,26 @@ require('lazy').setup({
 
   'ThePrimeagen/vim-be-good',
 
+  { 'j-hui/fidget.nvim', opts = {} },
   {
-    -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
+    "folke/lazydev.nvim",
+    ft = "lua", -- lua only
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+  { 'Hoffs/omnisharp-extended-lsp.nvim', lazy = true },
+
+  {
+    "mason-org/mason-lspconfig.nvim",
+    opts = {},
     dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim', config = true },
-      'williamboman/mason-lspconfig.nvim',
-
-      -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', event = "LspAttach", opts = {} },
-
-      -- Additional lua configuration, makes nvim stuff amazing
-      { 'folke/neodev.nvim', opts = {} },
-
-      -- csharp
-      { 'Hoffs/omnisharp-extended-lsp.nvim', lazy = true },
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
     },
   },
 
@@ -77,16 +79,15 @@ require('lazy').setup({
         "NvimTreeOpen"
       }
     }
-  },]]--
+  },]] --
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
 
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
-      -- See `:help gitsigns.txt`
       signs = {
         add = { text = '+' },
         change = { text = '~' },
@@ -99,7 +100,7 @@ require('lazy').setup({
         vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk,
           { buffer = bufnr, desc = 'Preview git hunk' })
 
-       -- don't override the built-in and fugitive keymaps
+        -- don't override the built-in and fugitive keymaps
         local gs = package.loaded.gitsigns
         vim.keymap.set({ 'n', 'v' }, ']c', function()
           if vim.wo.diff then return ']c' end
@@ -189,21 +190,21 @@ require('lazy').setup({
         icons_enabled = false,
         theme = 'onedark',
         -- theme = {
-          -- inactive = {
-            -- a = { fg = ThemeColor("NormalGrey", "fg"), bg = ThemeColor("NormalLight", "bg") },
-            -- c = { fg = ThemeColor("NormalGrey", "fg"), bg = ThemeColor("NormalSemiLight", "bg") }
-          -- },
-          -- insert = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Keyword", "fg") } },
-          -- normal = {
-            -- a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("String", "fg") },
-            -- b = { fg = ThemeColor("NormalVeryLight", "fg"), bg = ThemeColor("NormalVeryLight", "bg") },
-            -- y = { fg = ThemeColor("NormalVeryLight", "fg"), bg = ThemeColor("NormalVeryLight", "bg") },
-            -- c = { fg = ThemeColor("NormalLight", "fg"), bg = ThemeColor("NormalLight", "bg") },
-          -- },
-          -- command = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Number", "fg") } },
-          -- terminal = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Keyword", "fg") } },
-          -- visual = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Type", "fg") } },
-          -- replace = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Comment", "fg") } },
+        -- inactive = {
+        -- a = { fg = ThemeColor("NormalGrey", "fg"), bg = ThemeColor("NormalLight", "bg") },
+        -- c = { fg = ThemeColor("NormalGrey", "fg"), bg = ThemeColor("NormalSemiLight", "bg") }
+        -- },
+        -- insert = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Keyword", "fg") } },
+        -- normal = {
+        -- a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("String", "fg") },
+        -- b = { fg = ThemeColor("NormalVeryLight", "fg"), bg = ThemeColor("NormalVeryLight", "bg") },
+        -- y = { fg = ThemeColor("NormalVeryLight", "fg"), bg = ThemeColor("NormalVeryLight", "bg") },
+        -- c = { fg = ThemeColor("NormalLight", "fg"), bg = ThemeColor("NormalLight", "bg") },
+        -- },
+        -- command = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Number", "fg") } },
+        -- terminal = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Keyword", "fg") } },
+        -- visual = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Type", "fg") } },
+        -- replace = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Comment", "fg") } },
         -- },
         component_separators = '',
         section_separators = '',
@@ -212,7 +213,7 @@ require('lazy').setup({
         lualine_a = {
           { 'mode', separator = { left = ' ', right = '' } },
         },
-        lualine_b = { 'diff', { 'branch', separator = { left = '', right = ''} } },
+        lualine_b = { 'diff', { 'branch', separator = { left = '', right = '' } } },
         lualine_c = { 'filename' },
         lualine_x = { 'diagnostics' },
         lualine_y = { { 'fileformat', separator = { left = '', right = '' } }, 'filetype', 'progress' },
@@ -279,10 +280,9 @@ require('lazy').setup({
 
   -- nice tabs
   -- {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons', config=function()
-    -- require("bufferline").setup{}
+  -- require("bufferline").setup{}
   -- end}
 }, {})
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
-

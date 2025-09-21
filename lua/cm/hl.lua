@@ -56,13 +56,8 @@ hi("WinSeparator", colors.bg1, "bg")
 hi("StatusLine", colors.bg1, colors.bg1)
 hi("StatusLineNC", colors.bg1, colors.bg1)
 
-local function diagnostic_sign(name, text, color)
-  hi("DiagnosticSign" .. name, color)
-  vim.cmd("sign define DiagnosticSign" .. name .. " text=" .. text .. " texthl=DiagnosticSign" .. name)
-end
-
-diagnostic_sign("Error", "", colors.dark_red)
-diagnostic_sign("Warn", "", colors.dark_yellow)
-diagnostic_sign("Info", "", colors.dark_blue)
-diagnostic_sign("Hint", "", colors.dark_purple)
+hi("DiagnosticSignError", colors.dark_red)
+hi("DiagnosticSignWarn", colors.dark_yellow)
+hi("DiagnosticSignInfo", colors.dark_blue)
+hi("DiagnosticSignHint", colors.dark_purple)
 

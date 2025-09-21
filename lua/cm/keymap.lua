@@ -33,7 +33,12 @@ vim.keymap.set('n', '<leader>lr', ':lua vim.lsp.buf.rename()<CR>', { noremap = t
 vim.keymap.set('n', '<leader>lt', ':lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true, desc = "LSP type definition" })
 vim.keymap.set('n', '<leader>lu', ':lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true, desc = "LSP uses" })
 
-vim.keymap.set('i', '<C-c>', '<Esc>');
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+vim.keymap.set('i', '<C-c>', '<Esc>')
 
 -- wrap <left> and <right> to next line
 vim.cmd('set whichwrap+=<,>,[,]')
