@@ -2,7 +2,7 @@
 -- vim.keymap.set('n', '<Up>', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 -- vim.keymap.set('n', '<Down>', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<S-T>', ':NvimTreeOpen<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-T>', ':NvimTreeOpen<CR>', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<C-S>', ':w<CR>', { noremap = true })
 -- vim.api.nvim_set_keymap('i', '<C-S>', '<ESC>:w<CR>', { noremap = true })
 -- vim.api.nvim_set_keymap('i', '<C-Z>', '<ESC>ui', { noremap = true })
@@ -16,6 +16,7 @@ vim.keymap.set('n', '<leader>i', ':Inspect<CR>')
 vim.keymap.set('n', '<leader>tq', ':Telescope quickfix<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>td', ':Telescope diagnostics<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tf', ':Telescope fd<CR>', { noremap = true, silent = true, desc = "Telescope files" })
+vim.keymap.set('n', '<leader>tb', ':Telescope buffers<CR>', { noremap = true, silent = true, desc = "Telescope buffers" })
 vim.keymap.set('n', '<leader>tg', ':Telescope live_grep<CR>', { noremap = true, silent = true, desc = "Telescope grep" })
 vim.keymap.set('n', '<leader>ta', ':Telescope<CR>', { noremap = true, silent = true, desc = "Telescope view all" })
 vim.keymap.set('n', '<leader>tw', ':Telescope workspaces<CR>', { noremap = true, silent = true, desc = "Telescope workspaces" })
@@ -31,6 +32,8 @@ vim.keymap.set('n', '<leader>ls', ':lua vim.lsp.buf.signature_help()<CR>', { nor
 vim.keymap.set('n', '<leader>lr', ':lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true, desc = "LSP rename" })
 vim.keymap.set('n', '<leader>lt', ':lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true, desc = "LSP type definition" })
 vim.keymap.set('n', '<leader>lu', ':lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true, desc = "LSP uses" })
+
+vim.keymap.set('i', '<C-c>', '<Esc>');
 
 -- wrap <left> and <right> to next line
 vim.cmd('set whichwrap+=<,>,[,]')
