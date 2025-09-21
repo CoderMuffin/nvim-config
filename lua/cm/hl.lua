@@ -18,6 +18,13 @@ vim.cmd([[
 
   hi! link @variable.builtin Keyword
 
+  hi! link @tag.attribute Number
+  hi! link @tag.delimiter Normal
+
+  hi! link @lsp.typemod.variable.defaultLibrary Keyword
+
+  hi! link @variable Normal
+
   " Language specific
 
   hi! link @property.javascript @property
@@ -25,11 +32,15 @@ vim.cmd([[
   hi! link @punctuation.delimiter Keyword
   hi! link @variable.builtin.javascript Keyword
 
-  hi! link @type.css Keyword
+  hi! link @variable.member Special
+
+  hi! link @tag.jsx @type
+  hi! link @tag.tsx @tag.jsx
 
   " LSP
 
   hi! link @lsp.type.property Special
+  hi! link @lsp.type.member Special
   hi! link @lsp.type.enum @type
   hi! link @lsp.type.type Constant
   hi! link @lsp.type.parameter @variable
@@ -38,6 +49,7 @@ vim.cmd([[
 
   hi! Search cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
   hi! link Visual Search
+  hi! MatchParen guibg=#666666
 ]])
 
 vim.cmd("command! FixHl source " .. vim.fn.stdpath('config') .. "/lua/cm/hl.lua");
