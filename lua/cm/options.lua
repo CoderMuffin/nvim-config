@@ -2,9 +2,11 @@
 vim.cmd("set nosmd")
 vim.cmd("set fillchars=eob:\\ ")
 
-vim.opt.eol = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.o.eol = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+
+vim.o.wrap = false
 
 vim.wo.relativenumber = true
 
