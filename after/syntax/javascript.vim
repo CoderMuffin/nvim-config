@@ -4,3 +4,6 @@ hi! link @property.javascript Type
 hi! link @type.builtin.javascript Type
 hi! link @exception.javascript Keyword
 hi! link @conditional.ternary.javascript Keyword
+hi! link @property.javascript @property
+hi! link @method.call.javascript @method.call
+hi! link @variable.builtin.javascript Keyword

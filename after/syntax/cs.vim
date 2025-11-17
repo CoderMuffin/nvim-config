@@ -12,3 +12,4 @@ syn match csClass "\v[a-z_0-9]@<![A-Z][a-zA-Z0-9_]*"
 hi def link csFunction Type
 hi def link csClass Type
 
+hi! link @type.qualifier.c_sharp Keyword

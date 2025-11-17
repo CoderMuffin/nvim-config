@@ -3,47 +3,35 @@ vim.cmd([[
   
   hi! link @type Constant
   hi! link @type.builtin Keyword
-  hi! link @type.qualifier.c_sharp Keyword
+
+  hi! link @variable Normal
+  hi! link @variable.builtin Keyword
+  hi! link @variable.member Special
 
   hi! link @operator Keyword
   hi! link @parameter @variable
-  
   hi! link @property Special
   hi! link @field @property
-
   hi! link @constructor @type
-  hi! link @lsp.type.class @type
 
   hi! link @punctuation.bracket Normal
-
-  hi! link @variable.builtin Keyword
+  hi! link @punctuation.delimiter Keyword
 
   hi! link @tag.attribute Number
   hi! link @tag.delimiter Normal
-
-  hi! link @lsp.typemod.variable.defaultLibrary Keyword
-
-  hi! link @variable Normal
-
-  " Language specific
-
-  hi! link @property.javascript @property
-  hi! link @method.call.javascript @method.call
-  hi! link @punctuation.delimiter Keyword
-  hi! link @variable.builtin.javascript Keyword
-
-  hi! link @variable.member Special
 
   hi! link @tag.jsx @type
   hi! link @tag.tsx @tag.jsx
 
   " LSP
 
+  hi! link @lsp.type.class @type
   hi! link @lsp.type.property Special
   hi! link @lsp.type.member Special
   hi! link @lsp.type.enum @type
   hi! link @lsp.type.type Constant
   hi! link @lsp.type.parameter @variable
+  hi! link @lsp.typemod.variable.defaultLibrary Keyword
   
   " General
 
