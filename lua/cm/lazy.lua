@@ -82,25 +82,29 @@ require('lazy').setup({
   },]] --
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
 
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk,
-          { buffer = bufnr, desc = 'Preview git hunk' })
-
         -- don't override the built-in and fugitive keymaps
         local gs = package.loaded.gitsigns
-        vim.keymap.set({ 'n', 'v' }, ']c', function()
-          if vim.wo.diff then return ']c' end
+        vim.keymap.set('n', '<leader>gd', gs.diffthis, { buffer = bufnr, desc = 'Preview git hunk' })
+        vim.keymap.set('n', '<leader>ghp', gs.preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
+        vim.keymap.set('n', '<leader>ghs', gs.stage_hunk, { buffer = bufnr, desc = 'Stage/unstage git hunk' })
+        vim.keymap.set('n', '<leader>ghr', gs.reset_hunk, { buffer = bufnr, desc = 'Reset git hunk' })
+        vim.keymap.set('n', '<leader>gs', gs.stage_buffer, { buffer = bufnr, desc = 'Stage/unstage buffer' })
+        vim.keymap.set('n', '<leader>gb', gs.toggle_current_line_blame, { buffer = bufnr, desc = 'Toggle blame' })
+
+        vim.keymap.set({ 'n', 'v' }, 'ghn', function()
+          if vim.wo.diff then return 'ghn' end
           vim.schedule(function() gs.next_hunk() end)
           return '<Ignore>'
         end, { expr = true, buffer = bufnr, desc = "Jump to next hunk" })
-        vim.keymap.set({ 'n', 'v' }, '[c', function()
-          if vim.wo.diff then return '[c' end
+        vim.keymap.set({ 'n', 'v' }, 'ghp', function()
+          if vim.wo.diff then return 'ghp' end
           vim.schedule(function() gs.prev_hunk() end)
           return '<Ignore>'
         end, { expr = true, buffer = bufnr, desc = "Jump to previous hunk" })
@@ -268,9 +272,7 @@ require('lazy').setup({
   },
 
   -- nice tabs
-  -- {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons', config=function()
-  -- require("bufferline").setup{}
-  -- end}
+  -- {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons', opts={}}
 }, {})
 
 -- Enable telescope fzf native, if installed
