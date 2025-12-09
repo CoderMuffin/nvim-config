@@ -262,6 +262,8 @@ require('lazy').setup({
     }
   },
 
+  'mfussenegger/nvim-jdtls',
+
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',

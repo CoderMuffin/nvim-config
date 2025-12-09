@@ -13,5 +13,6 @@ hi! link javaClassDecl Keyword
 hi! link javaScopeDecl Keyword
 hi! link javaAnnotation Type
 hi! link javaMethodDecl Keyword
+hi! link javaStorageClass Keyword
 
 hi! link @lsp.type.modifier.java Keyword
