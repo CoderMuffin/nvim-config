@@ -37,7 +37,11 @@ vim.cmd([[
 
   hi! Search cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
   hi! link Visual Search
+  hi! link DiagnosticHint DiagnosticInfo
+  hi! link DiagnosticVirtualTextHint DiagnosticVirtualTextInfo
   hi! MatchParen guibg=#666666
+
+  hi clear EndOfBuffer
 ]])
 
 vim.cmd("command! FixHl source " .. vim.fn.stdpath('config') .. "/lua/cm/hl.lua");
@@ -59,5 +63,5 @@ hi("StatusLineNC", colors.bg1, colors.bg1)
 hi("DiagnosticSignError", colors.dark_red)
 hi("DiagnosticSignWarn", colors.dark_yellow)
 hi("DiagnosticSignInfo", colors.dark_blue)
-hi("DiagnosticSignHint", colors.dark_purple)
+hi("DiagnosticSignHint", colors.dark_blue)
 

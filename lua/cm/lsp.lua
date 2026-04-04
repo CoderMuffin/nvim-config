@@ -1,5 +1,5 @@
 local function trim_log_file()
-    local LOG_FILE = require('vim.lsp.log').get_filename()
+    local LOG_FILE = vim.lsp.log.get_filename()
 
     local f = io.open(LOG_FILE, "r")
     if f == nil then
@@ -26,5 +26,12 @@ trim_log_file()
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 vim.lsp.config("*", {
-  capabilities = capabilities
+    capabilities = capabilities
 })
+
+vim.api.nvim_create_user_command(
+    "LspLog",
+    function() vim.cmd { cmd = "e", args = { vim.lsp.log.get_filename() } } end,
+    { nargs = 0 }
+)
+

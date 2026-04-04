@@ -28,7 +28,7 @@ require('lazy').setup({
 
   'ThePrimeagen/vim-be-good',
 
-  { 'j-hui/fidget.nvim', opts = {} },
+  { 'j-hui/fidget.nvim',                 opts = {} },
   {
     "folke/lazydev.nvim",
     ft = "lua", -- lua only
@@ -69,17 +69,6 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets',
     },
   },
-
-  --[[{
-    'rmagatti/auto-session',
-    lazy = false,
-    opts = {
-      auto_restore_last_session = true,
-      post_restore_cmds = {
-        "NvimTreeOpen"
-      }
-    }
-  },]] --
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
@@ -235,7 +224,6 @@ require('lazy').setup({
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
       -- Fuzzy Finder Algorithm which requires local dependencies to be built.
@@ -262,19 +250,14 @@ require('lazy').setup({
     }
   },
 
-  'mfussenegger/nvim-jdtls',
-
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
+    branch = "main",
     build = ':TSUpdate',
+    lazy = false,
+    opts = { }
   },
-
-  -- nice tabs
-  -- {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons', opts={}}
 }, {})
 
 -- Enable telescope fzf native, if installed
