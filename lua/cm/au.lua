@@ -11,7 +11,6 @@ vim.api.nvim_create_autocmd('BufReadPre', {
     if vim.fn.strwidth(vim.fn.getline('.')) > 1000 or vim.fn.getfsize(vim.fn.expand('%')) > 1024 * 1024 then
       vim.b.large_buf = true
       vim.cmd("syntax off")
-      vim.opt_local.foldmethod = "manual"
       vim.opt_local.spell = false
       vim.opt_local.wrap = false
     end
@@ -22,15 +21,16 @@ vim.api.nvim_create_autocmd('BufReadPre', {
 
 vim.api.nvim_create_autocmd('FileType', {
   callback = function(args)
-    if not vim.treesitter.language.get_lang(args.match) then
+    local parser, err = vim.treesitter.get_parser(args.buf)
+    if not parser then
       return
     end
 
     vim.wo.foldmethod = 'expr'
     vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
-    return vim.treesitter.start(args.buf)
+    vim.treesitter.start(args.buf)
   end,
-  group = vim.api.nvim_create_augroup('YankHighlight', { clear = true }),
+  group = vim.api.nvim_create_augroup('TsEnabling', { clear = true }),
   pattern = '*',
 })
