@@ -26,8 +26,6 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  'ThePrimeagen/vim-be-good',
-
   { 'j-hui/fidget.nvim',                 opts = {} },
   {
     "folke/lazydev.nvim",
@@ -40,7 +38,8 @@ require('lazy').setup({
       },
     },
   },
-  { 'Hoffs/omnisharp-extended-lsp.nvim', lazy = true },
+
+  "github/copilot.vim",
 
   {
     "mason-org/mason-lspconfig.nvim",
