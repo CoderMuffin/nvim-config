@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd('FileType', {
       vim.keymap.set('n', '<leader>ld', ose.lsp_definition, { noremap = true, silent = true, desc = "LSP definition" })
       vim.keymap.set('n', '<leader>lD', ose.lsp_type_definition, { noremap = true, silent = true, desc = "LSP declaration" })
       vim.keymap.set('n', '<leader>li', ose.lsp_implementation, { noremap = true, silent = true, desc = "LSP implementation" })
-      vim.keymap.set('n', '<leader>lr', ose.lsp_references, { noremap = true, silent = true, desc = "LSP references" })
+      vim.keymap.set('n', '<leader>lu', ose.lsp_references, { noremap = true, silent = true, desc = "LSP uses" })
     end
   end,
   group = vim.api.nvim_create_augroup('TsEnabling', { clear = true }),
