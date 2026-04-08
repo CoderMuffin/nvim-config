@@ -5,7 +5,7 @@
   bg3 = "#50545c",
   bg_d = "", -- "#181c24", -- use bg1
   fg = "#c8c8d6",
-  purple = "#e070ef",
+  purple = "#d878ef",
   green = "#90e880",
   orange = "#f1aa46",
   blue = "#70b8ff",

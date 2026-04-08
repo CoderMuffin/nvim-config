@@ -1,5 +1,5 @@
 vim.cmd([[
-  " Telescope
+  " Treesitter
   
   hi! link @type Constant
   hi! link @type.builtin Keyword
@@ -23,6 +23,8 @@ vim.cmd([[
   hi! link @tag.jsx @type
   hi! link @tag.tsx @tag.jsx
 
+  hi! @function.macro guifg=#b8a0ff
+
   " LSP
 
   hi! link @lsp.type.class @type
@@ -32,6 +34,8 @@ vim.cmd([[
   hi! link @lsp.type.type Constant
   hi! link @lsp.type.parameter @variable
   hi! link @lsp.typemod.variable.defaultLibrary Keyword
+  hi! link @lsp.mod.attribute @function.macro
+  hi! link @lsp.type.macro @function.macro
   
   " General
 
