@@ -30,6 +30,14 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
     vim.treesitter.start(args.buf)
+
+    if args.match == "cs" then
+      local ose = require("omnisharp_extended")
+      vim.keymap.set('n', '<leader>ld', ose.lsp_definition, { noremap = true, silent = true, desc = "LSP definition" })
+      vim.keymap.set('n', '<leader>lD', ose.lsp_type_definition, { noremap = true, silent = true, desc = "LSP declaration" })
+      vim.keymap.set('n', '<leader>li', ose.lsp_implementation, { noremap = true, silent = true, desc = "LSP implementation" })
+      vim.keymap.set('n', '<leader>lr', ose.lsp_references, { noremap = true, silent = true, desc = "LSP references" })
+    end
   end,
   group = vim.api.nvim_create_augroup('TsEnabling', { clear = true }),
   pattern = '*',
