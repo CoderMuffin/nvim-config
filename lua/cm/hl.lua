@@ -30,6 +30,7 @@ vim.cmd([[
   hi! link @lsp.type.class @type
   hi! link @lsp.type.property Special
   hi! link @lsp.type.member Special
+  hi! link @lsp.type.member.typescript @function
   hi! link @lsp.type.enum @type
   hi! link @lsp.type.type Constant
   hi! link @lsp.type.parameter @variable
