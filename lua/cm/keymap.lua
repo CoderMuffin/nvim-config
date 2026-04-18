@@ -19,7 +19,9 @@ vim.keymap.set('n', '<leader>tf', ':Telescope fd<CR>', { noremap = true, silent 
 vim.keymap.set('n', '<leader>tb', ':Telescope buffers<CR>', { noremap = true, silent = true, desc = "Telescope buffers" })
 vim.keymap.set('n', '<leader>tg', ':Telescope live_grep<CR>', { noremap = true, silent = true, desc = "Telescope grep" })
 vim.keymap.set('n', '<leader>ta', ':Telescope<CR>', { noremap = true, silent = true, desc = "Telescope view all" })
-vim.keymap.set('n', '<leader>tw', ':Telescope workspaces<CR>', { noremap = true, silent = true, desc = "Telescope workspaces" })
+vim.keymap.set('n', '<leader>th', ':Telescope help_tags<CR>', { noremap = true, silent = true, desc = "Telescope help" })
+vim.keymap.set('n', '<leader>tr', ':Telescope resume<CR>', { noremap = true, silent = true, desc = "Telescope resume" })
+vim.keymap.set('n', '<leader>tw', ':SaveSession<CR>:Telescope workspaces<CR>', { noremap = true, silent = true, desc = "Telescope workspaces" })
 
 vim.keymap.set('n', '<leader>la', ':lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true, desc = "LSP code action" })
 vim.keymap.set('n', '<leader>lA', ':lua vim.lsp.buf.code_action({ apply = true })<CR>', { noremap = true, silent = true, desc = "LSP apply code action" })

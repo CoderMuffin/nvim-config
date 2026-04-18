@@ -7,6 +7,12 @@ vim.api.nvim_create_user_command(
   { nargs = 1 } -- Options: `?` means optional argument
 )
 
+vim.api.nvim_create_user_command(
+  "LazyPush",
+  function(args) vim.cmd("!git add . && git commit -m '-' && git push") end,
+  { nargs = 0 }
+)
+
 vim.cmd([[
   if !executable("rg") && !has("win32")
     echo 'Installing ripgrep...'
@@ -23,6 +29,5 @@ require("cm.au")
 require("cm.cfg.telescope")
 require("cm.lsp")
 require("cm.cfg.cmp")
+require("cm.sess")
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et

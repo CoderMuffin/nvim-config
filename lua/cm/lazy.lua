@@ -19,10 +19,8 @@ function ThemeColor(name, field)
 end
 
 require('lazy').setup({
-  -- Git related plugins
   'tpope/vim-fugitive',
-
-  -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-surround',
   'tpope/vim-sleuth',
 
   'Hoffs/omnisharp-extended-lsp.nvim',
@@ -52,25 +50,18 @@ require('lazy').setup({
   },
 
   {
-    -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
-
-      -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
-
-      -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
     },
   },
 
-  -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
 
   {
@@ -108,41 +99,39 @@ require('lazy').setup({
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
-    config = function()
-      require("nvim-tree").setup {
-        view = {
-          preserve_window_proportions = true
-        },
-        renderer = {
-          highlight_git = true,
-          -- indent_width = 4,
-          indent_markers = { enable = true },
-          icons = {
-            git_placement = "signcolumn",
-            show = {
-              file = true,
-              folder = true,
-              folder_arrow = true,
-              git = true,
-            },
-            padding = " ",
-            glyphs = {
-              default = "",
-              symlink = "LN",
-              git = {
-                unstaged = "~",
-                staged = "~",
-                unmerged = "M!",
-                renamed = "->",
-                deleted = "-",
-                untracked = "#",
-                ignored = "#",
-              }
-            }
+    opts = {
+      sync_root_with_cwd = true,
+      view = {
+        preserve_window_proportions = true
+      },
+      renderer = {
+        highlight_git = true,
+        indent_markers = { enable = true },
+        icons = {
+          git_placement = "signcolumn",
+          show = {
+            file = true,
+            folder = true,
+            folder_arrow = true,
+            git = true,
           },
+          padding = " ",
+          glyphs = {
+            default = "",
+            symlink = "LN",
+            git = {
+              unstaged = "~",
+              staged = "~",
+              unmerged = "M!",
+              renamed = "->",
+              deleted = "-",
+              untracked = "#",
+              ignored = "#",
+            }
+          }
         }
       }
-    end,
+    }
   },
 
   {
@@ -245,7 +234,7 @@ require('lazy').setup({
     'natecraddock/workspaces.nvim',
     opts = {
       hooks = {
-        open = { "e ." },
+        open = { "LoadSession" },
       }
     }
   },
