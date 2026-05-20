@@ -19,6 +19,27 @@ function ThemeColor(name, field)
 end
 
 require('lazy').setup({
+  {
+    "navarasu/onedark.nvim",
+    priority = 1000,
+    config = function()
+      require("onedark").setup {
+        colors = require("cm.colors"),
+        cmp_itemkind_reverse = true
+      }
+
+      vim.cmd.colorscheme 'onedark'
+
+      require("cm.hl")
+
+      local timer = vim.loop.new_timer()
+      -- Delay 2000ms and 0 means "do not repeat"
+      timer:start(2000, 0, vim.schedule_wrap(function()
+        vim.cmd(":FixHl")
+      end))
+    end,
+  },
+
   'tpope/vim-fugitive',
   'tpope/vim-surround',
   'tpope/vim-sleuth',
@@ -133,27 +154,6 @@ require('lazy').setup({
         }
       }
     }
-  },
-
-  {
-    "navarasu/onedark.nvim",
-    priority = 1000,
-    config = function()
-      require("onedark").setup {
-        colors = require("cm.colors"),
-        cmp_itemkind_reverse = true
-      }
-
-      vim.cmd.colorscheme 'onedark'
-
-      require("cm.hl")
-
-      local timer = vim.loop.new_timer()
-      -- Delay 2000ms and 0 means "do not repeat"
-      timer:start(2000, 0, vim.schedule_wrap(function()
-        vim.cmd(":FixHl")
-      end))
-    end,
   },
 
   {
