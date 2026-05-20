@@ -24,6 +24,9 @@ local function load_session(dir)
         vim.cmd { cmd = "source", args = { session } }
         local api = require("nvim-tree.api")
         api.tree.find_file { focus = false, open = true }
+        return true
+    else
+        return false
     end
 end
 
@@ -36,3 +39,8 @@ vim.api.nvim_create_autocmd({"VimLeavePre", "FocusLost"}, {
     end,
     group = vim.api.nvim_create_augroup("SessionPersist", { clear = true })
 })
+
+return {
+    load_session=load_session,
+    save_session=save_session
+}
