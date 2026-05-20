@@ -39,6 +39,7 @@ require('lazy').setup({
   },
 
   "github/copilot.vim",
+  "folke/sidekick.nvim",
 
   {
     "mason-org/mason-lspconfig.nvim",
@@ -234,7 +235,11 @@ require('lazy').setup({
     'natecraddock/workspaces.nvim',
     opts = {
       hooks = {
-        open = { "LoadSession" },
+        open = function()
+          if not require("cm.sess").load_session() then
+            vim.cmd("e .")
+          end
+        end,
       }
     }
   },

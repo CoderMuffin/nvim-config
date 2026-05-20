@@ -48,6 +48,8 @@ vim.cmd([[
   hi! MatchParen guibg=#666666
 
   hi clear EndOfBuffer
+
+  hi! QuickFixLine gui=bold guibg=#555555 guifg=NONE
 ]])
 
 vim.cmd("command! FixHl source " .. vim.fn.stdpath('config') .. "/lua/cm/hl.lua");

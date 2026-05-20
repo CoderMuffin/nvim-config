@@ -21,19 +21,28 @@ vim.keymap.set('n', '<leader>tg', ':Telescope live_grep<CR>', { noremap = true, 
 vim.keymap.set('n', '<leader>ta', ':Telescope<CR>', { noremap = true, silent = true, desc = "Telescope view all" })
 vim.keymap.set('n', '<leader>th', ':Telescope help_tags<CR>', { noremap = true, silent = true, desc = "Telescope help" })
 vim.keymap.set('n', '<leader>tr', ':Telescope resume<CR>', { noremap = true, silent = true, desc = "Telescope resume" })
-vim.keymap.set('n', '<leader>tw', ':SaveSession<CR>:Telescope workspaces<CR>', { noremap = true, silent = true, desc = "Telescope workspaces" })
+vim.keymap.set('n', '<leader>tw', ':SaveSession<CR>:Telescope workspaces<CR>',
+  { noremap = true, silent = true, desc = "Telescope workspaces" })
 
-vim.keymap.set('n', '<leader>la', ':lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true, desc = "LSP code action" })
-vim.keymap.set('n', '<leader>lA', ':lua vim.lsp.buf.code_action({ apply = true })<CR>', { noremap = true, silent = true, desc = "LSP apply code action" })
-vim.keymap.set('n', '<leader>ld', ':lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true, desc = "LSP definition" })
-vim.keymap.set('n', '<leader>lD', ':lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true, desc = "LSP declaration" })
+vim.keymap.set('n', '<leader>la', ':lua vim.lsp.buf.code_action()<CR>',
+  { noremap = true, silent = true, desc = "LSP code action" })
+vim.keymap.set('n', '<leader>lA', ':lua vim.lsp.buf.code_action({ apply = true })<CR>',
+  { noremap = true, silent = true, desc = "LSP apply code action" })
+vim.keymap.set('n', '<leader>ld', ':lua vim.lsp.buf.definition()<CR>',
+  { noremap = true, silent = true, desc = "LSP definition" })
+vim.keymap.set('n', '<leader>lD', ':lua vim.lsp.buf.declaration()<CR>',
+  { noremap = true, silent = true, desc = "LSP declaration" })
 vim.keymap.set('n', '<leader>lf', ':lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true, desc = "LSP format" })
 vim.keymap.set('n', '<leader>lh', ':lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true, desc = "LSP hover" })
-vim.keymap.set('n', '<leader>li', ':lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true, desc = "LSP implementation" })
-vim.keymap.set('n', '<leader>ls', ':lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true, desc = "LSP signature" })
+vim.keymap.set('n', '<leader>li', ':lua vim.lsp.buf.implementation()<CR>',
+  { noremap = true, silent = true, desc = "LSP implementation" })
+vim.keymap.set('n', '<leader>ls', ':lua vim.lsp.buf.signature_help()<CR>',
+  { noremap = true, silent = true, desc = "LSP signature" })
 vim.keymap.set('n', '<leader>lr', ':lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true, desc = "LSP rename" })
-vim.keymap.set('n', '<leader>lt', ':lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true, desc = "LSP type definition" })
-vim.keymap.set('n', '<leader>lu', ':lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true, desc = "LSP uses" })
+vim.keymap.set('n', '<leader>lt', ':lua vim.lsp.buf.type_definition()<CR>',
+  { noremap = true, silent = true, desc = "LSP type definition" })
+vim.keymap.set('n', '<leader>lu', ':lua vim.lsp.buf.references()<CR>',
+  { noremap = true, silent = true, desc = "LSP uses" })
 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
@@ -44,4 +53,3 @@ vim.keymap.set('i', '<C-c>', '<Esc>')
 
 -- wrap <left> and <right> to next line
 vim.cmd('set whichwrap+=<,>,[,]')
-
