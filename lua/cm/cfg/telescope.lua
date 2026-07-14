@@ -26,4 +26,3 @@ vim.keymap.set('n', '<leader>/', function()
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown())
 end, { desc = '[/] Fuzzily search in current buffer' })
 
-

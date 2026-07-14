@@ -3,7 +3,10 @@ vim.cmd("set nosmd")
 vim.cmd("set fillchars=eob:\\ ")
 
 vim.o.tabstop = 4
-vim.o.shiftwidth = 4
+vim.o.shiftwidth = 0
+vim.o.softtabstop = -1
+vim.o.expandtab = false
+
 vim.o.foldenable = false
 
 vim.o.wrap = false

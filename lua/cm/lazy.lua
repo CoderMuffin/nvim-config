@@ -12,6 +12,15 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+function TabState()
+  local et = vim.bo.et
+  local sw = vim.bo.sw
+  local ts = vim.bo.ts
+  return et and
+    ((sw == 0 and ts or sw) .. "spc") or
+    ((sw ~= 0 and sw ~= ts) and "mix!" or "tabs")
+end
+
 function ThemeColor(name, field)
   local id = vim.fn.synIDtrans(vim.fn.hlID(name))
   local background_color = vim.fn.synIDattr(id, field, "gui")
@@ -126,6 +135,10 @@ require('lazy').setup({
       view = {
         preserve_window_proportions = true
       },
+      filesystem_watchers = {
+        debounce_delay = 50,
+        max_events = 10000
+      },
       renderer = {
         highlight_git = true,
         indent_markers = { enable = true },
@@ -161,26 +174,23 @@ require('lazy').setup({
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
+      extensions = {
+        {
+          filetypes = { 'NvimTree' },
+          sections = {
+            lualine_a = {
+              { 'mode', separator = { left = ' ', right = '' } },
+            },
+            lualine_c = { 'vim.fn.getcwd()' }
+          },
+          inactive_sections = {
+            lualine_c = { 'vim.fn.getcwd()' }
+          }
+        }
+      },
       options = {
         icons_enabled = false,
         theme = 'onedark',
-        -- theme = {
-        -- inactive = {
-        -- a = { fg = ThemeColor("NormalGrey", "fg"), bg = ThemeColor("NormalLight", "bg") },
-        -- c = { fg = ThemeColor("NormalGrey", "fg"), bg = ThemeColor("NormalSemiLight", "bg") }
-        -- },
-        -- insert = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Keyword", "fg") } },
-        -- normal = {
-        -- a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("String", "fg") },
-        -- b = { fg = ThemeColor("NormalVeryLight", "fg"), bg = ThemeColor("NormalVeryLight", "bg") },
-        -- y = { fg = ThemeColor("NormalVeryLight", "fg"), bg = ThemeColor("NormalVeryLight", "bg") },
-        -- c = { fg = ThemeColor("NormalLight", "fg"), bg = ThemeColor("NormalLight", "bg") },
-        -- },
-        -- command = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Number", "fg") } },
-        -- terminal = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Keyword", "fg") } },
-        -- visual = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Type", "fg") } },
-        -- replace = { a = { fg = ThemeColor("Normal", "bg"), bg = ThemeColor("Comment", "fg") } },
-        -- },
         component_separators = '',
         section_separators = '',
       },
@@ -191,22 +201,18 @@ require('lazy').setup({
         lualine_b = { 'diff', { 'branch', separator = { left = '', right = '' } } },
         lualine_c = { 'filename' },
         lualine_x = { 'diagnostics' },
-        lualine_y = { { 'fileformat', separator = { left = '', right = '' } }, 'filetype', 'progress' },
+        lualine_y = { { 'fileformat', separator = { left = '', right = '' } }, 'TabState()', 'filetype', 'progress' },
         lualine_z = {
           { 'location', separator = { left = '', right = ' ' } },
         },
       },
       inactive_sections = {
-        lualine_a = {
-          { 'mode', separator = { left = ' ', right = '' } },
-        },
+        lualine_a = {},
         lualine_b = {},
         lualine_c = { 'filename' },
-        lualine_x = {},
+        lualine_x = { 'diagnostics' },
         lualine_y = {},
-        lualine_z = {
-          { 'location', separator = { left = '', right = ' ' } },
-        },
+        lualine_z = {},
       },
     },
   },
@@ -235,9 +241,13 @@ require('lazy').setup({
     'natecraddock/workspaces.nvim',
     opts = {
       hooks = {
-        open = function()
-          if not require("cm.sess").load_session() then
+        open = function(name)
+          local loaded_session = require("cm.sess").load_session()
+          if not loaded_session then
             vim.cmd("e .")
+          end
+          if vim.fn.executable("powershell") then
+            vim.cmd("silent! !powershell -c \"$Host.UI.RawUI.WindowTitle = '" .. name:gsub("'|\\", "") .. "'\"")
           end
         end,
       }

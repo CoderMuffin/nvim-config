@@ -14,7 +14,19 @@ local function session_name(dir)
 end
 
 local function save_session(dir)
-    vim.cmd { cmd = "mksession", args = { session_name(dir) }, bang = true }
+    local session = session_name(dir)
+
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buftype == "terminal" then
+            local content = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+        end
+    end
+
+    vim.cmd { cmd = "mksession", args = { session }, bang = true }
+
+    local file = io.open(session .. "_3_3winsz", "w") or error()
+    file:write(vim.fn.winrestcmd())
+    file:close()
 end
 
 local function load_session(dir)
@@ -22,8 +34,16 @@ local function load_session(dir)
 
     if vim.fn.filereadable(session) == 1 then
         vim.cmd { cmd = "source", args = { session } }
+
         local api = require("nvim-tree.api")
         api.tree.find_file { focus = false, open = true }
+
+        local file = io.open(session .. "_3_3winsz", "r")
+        if file then
+            vim.cmd(file:read("*a"))
+            file:close()
+        end
+
         return true
     else
         return false

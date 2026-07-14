@@ -73,3 +73,12 @@ hi("DiagnosticSignWarn", colors.dark_yellow)
 hi("DiagnosticSignInfo", colors.dark_blue)
 hi("DiagnosticSignHint", colors.dark_blue)
 
+-- cursorline current window only
+
+vim.cmd([[
+  augroup CursorLine
+    autocmd!
+    autocmd VimEnter,BufWinEnter,WinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
+  augroup END
+]])
