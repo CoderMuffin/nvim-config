@@ -249,6 +249,7 @@ require('lazy').setup({
           if vim.fn.executable("powershell") then
             vim.cmd("silent! !powershell -c \"$Host.UI.RawUI.WindowTitle = '" .. name:gsub("'|\\", "") .. "'\"")
           end
+          vim.cmd("WorkspacesSyncDirs")
         end,
       }
     }
