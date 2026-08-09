@@ -40,9 +40,7 @@ require("cm.diagnostics")
 require("cm.au")
 require("cm.qf")
 
-require("cm.cfg.telescope")
 require("cm.lsp")
-require("cm.cfg.cmp")
 
 require("cm.sess")
 

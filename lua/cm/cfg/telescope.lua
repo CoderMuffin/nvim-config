@@ -16,6 +16,9 @@ telescope.setup {
     },
   },
 }
+
+-- try load fzf
+pcall(telescope.load_extension, 'fzf')
 telescope.load_extension('workspaces')
 
 -- See `:help telescope.builtin`

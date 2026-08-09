@@ -91,6 +91,9 @@ require('lazy').setup({
       'hrsh7th/cmp-cmdline',
       'rafamadriz/friendly-snippets',
     },
+    config = function()
+      require("cm.cfg.cmp")
+    end,
   },
 
   { 'folke/which-key.nvim', opts = {} },
@@ -235,10 +238,20 @@ require('lazy').setup({
         end,
       },
     },
+    config = function()
+      require("cm.cfg.telescope")
+    end
   },
 
   {
     'natecraddock/workspaces.nvim',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+    },
+    config = function(self, opts)
+      require("workspaces").setup(opts)
+      vim.cmd("WorkspacesSyncDirs")
+    end,
     opts = {
       hooks = {
         open = function(name)
@@ -249,7 +262,6 @@ require('lazy').setup({
           if vim.fn.executable("powershell") then
             vim.cmd("silent! !powershell -c \"$Host.UI.RawUI.WindowTitle = '" .. name:gsub("'|\\", "") .. "'\"")
           end
-          vim.cmd("WorkspacesSyncDirs")
         end,
       }
     }
@@ -264,6 +276,3 @@ require('lazy').setup({
     opts = { }
   },
 }, {})
-
--- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
