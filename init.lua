@@ -39,8 +39,5 @@ require("cm.lazy")
 require("cm.diagnostics")
 require("cm.au")
 require("cm.qf")
-
 require("cm.lsp")
-
 require("cm.sess")
-

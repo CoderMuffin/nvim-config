@@ -96,7 +96,7 @@ require('lazy').setup({
     end,
   },
 
-  { 'folke/which-key.nvim', opts = {} },
+  'folke/which-key.nvim',
 
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
@@ -250,7 +250,7 @@ require('lazy').setup({
     },
     config = function(self, opts)
       require("workspaces").setup(opts)
-      vim.cmd("WorkspacesSyncDirs")
+      vim.cmd("silent WorkspacesSyncDirs")
     end,
     opts = {
       hooks = {
