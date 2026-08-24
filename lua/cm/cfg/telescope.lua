@@ -11,6 +11,7 @@ telescope.setup {
         ['<C-d>'] = actions.delete_buffer,
       },
       n = {
+        ['<C-c>'] = actions.close,
         ['<C-d>'] = actions.delete_buffer,
       }
     },
