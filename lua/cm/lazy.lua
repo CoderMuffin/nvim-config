@@ -250,7 +250,7 @@ require('lazy').setup({
     },
     config = function(self, opts)
       require("workspaces").setup(opts)
-      vim.cmd("silent WorkspacesSyncDirs")
+      -- vim.cmd("silent WorkspacesSyncDirs")
     end,
     opts = {
       hooks = {
