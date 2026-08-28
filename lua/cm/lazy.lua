@@ -240,14 +240,12 @@ require('lazy').setup({
     },
     config = function()
       require("cm.cfg.telescope")
+      vim.api.nvim_create_autocmd("VimEnter", { command = "Telescope workspaces" })
     end
   },
 
   {
     'natecraddock/workspaces.nvim',
-    dependencies = {
-      'nvim-telescope/telescope.nvim',
-    },
     config = function(self, opts)
       require("workspaces").setup(opts)
       -- vim.cmd("silent WorkspacesSyncDirs")

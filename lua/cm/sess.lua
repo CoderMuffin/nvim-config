@@ -53,7 +53,7 @@ end
 vim.api.nvim_create_user_command("SaveSession", function(args) save_session(args.args) end, { nargs = "?" })
 vim.api.nvim_create_user_command("LoadSession", function(args) load_session(args.args) end, { nargs = "?" })
 
-vim.api.nvim_create_autocmd({"VimLeavePre", "FocusLost"}, {
+vim.api.nvim_create_autocmd({"VimLeavePre", "FocusLost", "VimSuspend"}, {
     callback = function(data)
         save_session()
     end,
