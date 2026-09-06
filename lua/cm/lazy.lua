@@ -240,7 +240,13 @@ require('lazy').setup({
     },
     config = function()
       require("cm.cfg.telescope")
-      vim.api.nvim_create_autocmd("VimEnter", { command = "Telescope workspaces" })
+      vim.api.nvim_create_autocmd("VimEnter", {
+        callback = function()
+          if #vim.fn.argv() == 0 then
+            vim.cmd("Telescope workspaces")
+          end
+        end
+      })
     end
   },
 
