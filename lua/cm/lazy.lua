@@ -135,6 +135,7 @@ require('lazy').setup({
     },
     opts = {
       sync_root_with_cwd = true,
+      git = { ignore = false },
       view = {
         preserve_window_proportions = true
       },
